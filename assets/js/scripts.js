@@ -50,6 +50,21 @@ function validateForm() {
     // Pista: Usa getElementById('apellidoPaterno')
     
     // Tu código aquí...
+    const apellidoPaterno = document.getElementById('apellidoPaterno');
+    const valorApellidoPaterno = apellidoPaterno.value.trim();
+    
+    if (valorApellidoPaterno === '') {
+        // Campo vacío - marcar como inválido
+        ApellidoPaterno.classList.add('no-valid');
+        isValid = false;
+    } else if (valorApellidoPaterno.length < 2) {
+        // Muy corto - marcar como inválido
+        ApellidoPaterno.classList.add('no-valid');
+        isValid = false;
+    } else {
+        // Campo válido - remover marca de error si existe
+        apellidoPaterno.classList.remove('no-valid');
+    }
     
     
     // ==========================================
@@ -58,6 +73,22 @@ function validateForm() {
     // Requisitos: No vacío, mínimo 2 caracteres
     
     // Tu código aquí...
+    const ApellidoMaterno = document.getElementById('ApellidoMaterno');
+    const valorApellidoMaterno = nombre.value.trim();
+    
+    if (valorApellidoMaterno === '') {
+        // Campo vacío - marcar como inválido
+        ApellidoMaterno.classList.add('no-valid');
+        isValid = false;
+    } else if (valorApellidoMaterno.length < 2) {
+        // Muy corto - marcar como inválido
+        ApellidoMaterno.classList.add('no-valid');
+        isValid = false;
+    } else {
+        // Campo válido - remover marca de error si existe
+        ApellidoMaterno
+        .classList.remove('no-valid');
+    }
     
     
     // ==========================================
@@ -67,7 +98,29 @@ function validateForm() {
     // Pista: Usa /^\d{10}$/.test(valor) para validar
     
     // Tu código aquí...
+    const cedula = document.getElementById('cedula');
+    const valorcedula = nombre.value.trim();
+    const regex = "/^\d{10}$/.";
+    if (!regex.test(valorCedula)){
+        cedula.classList.add('no-valid')
+        isValid = false;
+    } else { 
+        cedula.classList.remove('no-valid')
+    }
     
+    if (valorcedula === '') {
+        // Campo vacío - marcar como inválido
+        cedula.classList.add('no-valid');
+        isValid = false;
+    } else if (valorcedula.length < 2) {
+        // Muy corto - marcar como inválido
+        cedula.classList.add('no-valid');
+        isValid = false;
+    } else {
+        // Campo válido - remover marca de error si existe
+        cedula
+        .classList.remove('no-valid');
+    }
     
     // ==========================================
     // TODO: Validar Motivo
@@ -75,6 +128,11 @@ function validateForm() {
     // Requisitos: No vacío, mínimo 10 caracteres
     
     // Tu código aquí...
+    
+    const motivo = document.getElementById('motivo');
+    if (!validarCampoTexto(motivo, 10)) {
+        isValid = false;
+    }
     
     
     // ==========================================
@@ -84,6 +142,13 @@ function validateForm() {
     // Pista: Verifica que select.value !== ''
     
     // Tu código aquí...
+    const tipoCuenta = document.getElementById('tipo_cuenta');
+    if (tipoCuenta.value === '') {
+        tipoCuenta.classList.add('no-valid');
+        isValid = false;
+    } else {
+        tipoCuenta.classList.remove('no-valid');
+    }
     
     
     // ==========================================
@@ -92,6 +157,10 @@ function validateForm() {
     // Requisitos: No vacío, mínimo 3 caracteres
     
     // Tu código aquí...
+    const calle = document.getElementById('calle');
+    if (!validarCampoTexto(calle, 3)) {
+        isValid = false;
+    }
     
     
     // ==========================================
@@ -100,7 +169,10 @@ function validateForm() {
     // Requisitos: No vacío
     
     // Tu código aquí...
-    
+    const numero = document.getElementById('numero');
+    if (!validarCampoTexto(numero, 1)) {
+        isValid = false;
+    }
     
     // ==========================================
     // TODO: Validar Intersección
@@ -108,7 +180,10 @@ function validateForm() {
     // Requisitos: No vacío, mínimo 3 caracteres
     
     // Tu código aquí...
-    
+    const interseccion = document.getElementById('interseccion');
+    if (!validarCampoTexto(interseccion, 3)) {
+        isValid = false;
+    }
     
     // Retornar el resultado final de la validación
     return isValid;
